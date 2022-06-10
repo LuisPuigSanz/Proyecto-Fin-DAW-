@@ -1,0 +1,77 @@
+.comment-box{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 4px;
+    background-color: rgba(231, 231, 231, 0.84);
+    border-radius: 4px;
+    position: relative;   
+}
+
+.caja-comentarios{
+    display: flex;
+    justify-content: center;
+}
+.editform{
+
+}
+.edit-form{
+    position:absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.edit-form button{  
+    width: 60px;
+    height: 40px;
+    color: #000000;
+    opacity: 0.5;
+    background-color: rgba(231, 231, 231, 0.84);
+    border: none;
+}
+
+.delete-form{
+    position:absolute;
+    top: 0px;
+    right: 60px;
+}
+.delete-form button{  
+    width: 80px;
+    height: 40px;
+    color: #000000;
+    opacity: 0.5;
+    background-color: rgba(231, 231, 231, 0.84);
+    border: none;
+}
+
+.reply-form{
+    position:absolute;
+    top: 0px;
+    right: 60px;
+}
+.reply-form button{  
+    width: 60px;
+    height: 40px;
+    color: #000000;
+    opacity: 0.5;
+    background-color: rgba(231, 231, 231, 0.84);
+    border: none;
+}
+
+
+
+.edit-form button:hover{
+    opacity: 1;
+}
+.delete-form button:hover{
+    opacity: 1;
+}
+.reply-form button:hover{
+    opacity: 1;
+}
+
+.responderMensaje{
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

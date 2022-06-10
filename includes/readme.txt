@@ -1,0 +1,1 @@
+En esta carpeta están las instrucciones para manejar la BBDD.

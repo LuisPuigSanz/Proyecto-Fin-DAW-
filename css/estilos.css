@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+
+:root {
+    --primary: #0d6efd;
+    --dark: #21252f;
+    --body: #888;
+    --white: #ffffff;
+    --box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: "Sora", sans-serif;
+    line-height: 1.7;
+    color: var(--body);
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-4 {
+    color: var(--dark);
+    font-weight: 700;
+}
+
+a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+.navbar {
+    box-shadow: var(--box-shadow);
+}
+
+.logo {
+    width: 160px;
+}
+
+.navbar .nav-link {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.navbar .nav-link.active {
+    color: var(--primary) !important;
+}
+
+.btn {
+    padding: 14px 18px;
+    border-width: 2px;
+    border-radius: 0;
+}
+
+.hero {
+    background-image: url(../img/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+}
+
+.hero::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(21, 20, 51, 0.8);
+    z-index: -1;
+}
+
+section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.card-effect {
+    box-shadow: var(--box-shadow);
+    background-color: var(--white);
+    padding: 25px;
+    transition: all 0.35s ease;
+}
+
+.card-effect:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.iconbox {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 32px;
+    border-radius: 100px;
+    flex: none;
+}
+
+
+.service {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.service::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background-color: var(--primary);
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+
+.service:hover .iconbox {
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+.service:hover h5,
+.service:hover p {
+    color: var(--white);
+    ;
+}
+
+.service:hover::after {
+    opacity: 1;
+    top: 0;
+}
+
+.col-img {
+    background-image: url(../img/banner3.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 500px;
+}
+
+.project {
+    position: relative;
+    overflow: hidden;
+}
+
+.project .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 20, 51, 0.8);
+    padding: 30px;
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.project img {
+    transition: all 0.4s ease;
+}
+
+.project:hover .overlay {
+    opacity: 1;
+}
+
+.project:hover img {
+    transform: scale(1.1);
+}
+
+
+.pricing i {
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.pricing ul li {
+    margin-top: 8px;
+}
+
+.team-member img {
+    width: 125px;
+    height: 125px;
+    border-radius: 100px;
+}
+
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons a {
+    width: 34px;
+    height: 34px;
+    background-color: var(--primary);
+    border-radius: 2px solid var(--primary);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    margin-left: 5px;
+    transition: all 0.4s ease;
+    border: 2px solid var(--primary);
+}
+
+.social-icons a:hover {
+    color: var(--primary);
+    background-color: transparent;
+    border-color: var(--primarys);
+}
+
+
+form input.form-control {
+    height: 56px;
+}
+
+form .form-control {
+    border: transparent;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+
+.footer-top {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    background-color: var(--dark);
+}
+
+.footer-top a {
+    color: var(--body);
+}
+
+.footer-top a:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    background-color: #242933;
+}
+
+
+
+/* --------------------------------------- SERVICIOS FORMULARIO ----------------------------------------------- */
+
+.tablaFormulario {
+    position: relative;
+    display: block;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 0 auto;
+}
+
+#tablaFormulario tr td {
+    padding-right: 2rem;
+
+}
+
+.DivSubgrupoFormulario {
+    align-items: center;
+    box-sizing: border-box;
+    color: rgb(16, 16, 16);
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14.592px;
+    font-style: normal;
+    font-weight: 400;
+    hyphens: manual;
+    line-height: 23.35px;
+    margin-bottom: 15px;
+    min-height: 1px;
+    overflow-wrap: break-word;
+    padding-left: 0px;
+    padding-right: 0px;
+    position: relative;
+    width: 689.6px;
+    -moz-box-align: center
+}
+
+.subgrupoFormulario {
+    box-sizing: border-box;
+    color: rgb(16, 16, 16);
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    hyphens: manual;
+    line-height: 25.6px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    /* padding-left: 8rem; */
+}
+
+/* ------------------------------------------ seccion comentarios ---------------------------------------------- */
+
+.comment-thread {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-thread>.comment-replybox-thread {
+    order: 1;
+}
+
+.comment-thread>ol {
+    order: 2;
+}
+
+.comment-thread>.loadmore {
+    order: 4;
+}
+
+
+/* -----------------------------------   LOGIN SYSTEM ------------------------------------ */
+
+.btnAcceder {}
+
+.btnRegistro {}
+
+
+
+
+/* ----------------------------------  MAPA ------------------------------------- */
+#mapa {
+    position: relative;
+    text-align: center;
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px solid black;
+    background: #CCC;
+}
+
+#mapa .mensaje {
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgb(54, 54, 54);
+    width: 180px;
+    line-height: 135%;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+#mapa iframe {
+    border: 1px solid black;
+}
+
+.ubicar {
+    display: block;
+    text-align: center;
+}
+
+
+/* --------------------------------- TABLA GALERIA -------------------------------------- */
+/* .tabla {
+    background-color: var(--color-white);
+    width: 100%;
+    border-radius: 4px;
+    border-collapse: collapse;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    box-shadow: 0 2px 20px rgba(0, 67, 115, 0.2);
+}
+
+.tabla th,tr {
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.tabla tbody th {
+    border: rgb(16, 16, 16) solid 1px;
+}
+
+.imagenTabla {
+    max-width: 50%;
+}
+
+.containerSubirImg{
+    max-width: 80%;
+}
+
+@media screen and (max-width: 480px) {
+    .tabla{
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .tabla{
+        width: 50%;
+    }
+} */
+
+.tabla {
+    border: none;
+    width: 80%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.tabla td { 
+    padding: 5px 10px;
+    text-align: center;
+    /* border: 1px solid rgb(245, 245, 245); */
+    border-radius: 20px;
+}
+
+.tabla th {
+    /* background: #faf8f8; */
+    text-align: center;
+}
+.tabla tr{
+    padding: 40px;
+}
+.tabla td img{
+    max-width: 300px;
+    cursor: pointer;
+    transition: 0.5s;
+   
+}
+
+.activada{
+    transition: 1s;
+    border-radius: 50px;
+    box-shadow: 0px 5px 20px 10px rgba(0, 67, 115, 0.2);
+    border: 3px solid white;
+    max-width: 350px;
+}
+
+/* ------------------------------------------ COOKIES --------------------------------------- */
+.aviso-cookies{
+    display: block;
+    background: #fff;
+    padding: 20px;
+    width: calc(100%- 40px);
+    max-width: 300px;
+    line-height: 150%;
+    border-radius: 10px;
+    position: fixed;
+}

@@ -7,22 +7,22 @@
  <script>
      $(document).ready(function() {
          $("#loquieroDes").click(function() {
-            $("#serviciosSeleccion option[value=1]").attr("selected",true);
+             $("#serviciosSeleccion option[value=1]").attr("selected", true);
          });
          $("#loquieroPub").click(function() {
-            $("#serviciosSeleccion option[value=2]").attr("selected",true);
+             $("#serviciosSeleccion option[value=2]").attr("selected", true);
          });
          $("#loquieroRed").click(function() {
-            $("#serviciosSeleccion option[value=3]").attr("selected",true);
+             $("#serviciosSeleccion option[value=3]").attr("selected", true);
          });
          $("#loquieroDis").click(function() {
-            $("#serviciosSeleccion option[value=4]").attr("selected",true);
+             $("#serviciosSeleccion option[value=4]").attr("selected", true);
          });
          $("#loquieroSeo").click(function() {
-            $("#serviciosSeleccion option[value=5]").attr("selected",true);
+             $("#serviciosSeleccion option[value=5]").attr("selected", true);
          });
          $("#loquieroFot").click(function() {
-            $("#serviciosSeleccion option[value=6]").attr("selected",true);
+             $("#serviciosSeleccion option[value=6]").attr("selected", true);
          });
 
      });
@@ -43,13 +43,20 @@
          </div>
      </div><!-- //BANNER -->
 
+     <!-------- AVISO COOKIES -------->
+
      <div class="aviso-cookies" id="aviso-cookies">
-        <img class="galleta" src=".//img/cookie.svg" alt="Galleta">
-        <h3 class="titulo-cookies">Cookies</h3>
-        <p class="parrafo-cookies">Utilizamos cookies propias y de terceros para mejorar nuestros servicios.</p>
-        <button class="boton-cookies" id="boton-cookies">De acuerdo</button>
-        <a href="../media/sabermas.php">Aviso de cookies</a>
+         <img class="galleta" src="./img/cookie.svg" alt="Galleta">
+         <h3 class="titulo-cookies">Cookies</h3>
+         <p class="parrafo-cookies">Utilizamos cookies propias y de terceros para mejorar nuestros servicios.</p>
+         <button class="boton-cookies btn btn-primary" id="boton-aceptar-cookies">De acuerdo</button>
+         <a class="enlace-cookies" href="../media/sabermas.php">Aviso de cookies</a>
      </div>
+
+     <div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
+
+     <script src="./js/avisoCookies.js"></script>
+
 
      <!------------------------------ SERVICIOS -------------------------------->
      <section id="servicios">
@@ -201,7 +208,9 @@
                          <img src="img/pro1.jpg" alt="">
                          <div class="overlay">
                              <div>
-                                 <h4 class="text-white">Desarrollo de software</h4>
+                             <a href="https://outlet.valentinsanchez.com/" target="_blank">
+                                     <h4 class="text-white">Visita Valentín Sanchez</h4>
+                                 </a>
                                  <h6 class="text-white">En curso</h6>
                              </div>
                          </div>
@@ -225,8 +234,8 @@
                          <img src="img/infocosta.png" alt="">
                          <div class="overlay">
                              <div>
-                                 <a href="https://www.infocostablanca.com/es/" target="_blank">
-                                     <h4 class="text-white">InfoCostaBlanca.com</h4>
+                                 <a href="https://www.exclusivasdelbebe.com/" target="_blank">
+                                     <h4 class="text-white">Visita Exclusivas del bebé</h4>
                                  </a>
                                  <h6 class="text-white">Diseño y desarrollo web</h6>
                              </div>
@@ -238,7 +247,9 @@
                          <img src="img/pro4.jpg" alt="">
                          <div class="overlay">
                              <div>
-                                 <h4 class="text-white">Community management</h4>
+                             <a href="http://vanesaestetica.com/" target="_blank">
+                                     <h4 class="text-white">Visita Vanesa Estética</h4>
+                                 </a>
                                  <h6 class="text-white">Redes Sociales</h6>
                              </div>
                          </div>
@@ -249,7 +260,9 @@
                          <img src="img/pro6.jpg" alt="">
                          <div class="overlay">
                              <div>
-                                 <h4 class="text-white">Marketing Online</h4>
+                             <a href="https://www.dbtsglobalcorp.com/" target="_blank">
+                                     <h4 class="text-white">Visita DBTSGlobalCorp</h4>
+                                 </a>
                                  <h6 class="text-white">Publicidad</h6>
                              </div>
                          </div>

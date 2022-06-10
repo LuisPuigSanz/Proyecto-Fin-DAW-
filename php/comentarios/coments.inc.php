@@ -30,8 +30,8 @@ function getComments($conn)
 
     while ($row = $result->fetch_assoc()) {
         echo "<div class='container'>
-        <div class='comment-box'>
-        <p>";
+            <div class='comment-box'>
+            <p>";
         echo "<h6>" . $row['uid'] . "</h6> <br>";
         echo $row['fecha'] . "<br>";
         echo nl2br($row['mensaje']) . "</p>"; //nl = new line   2br = 2x <br> 
@@ -62,8 +62,7 @@ function getComments($conn)
                 <button name='commentDelete'>Responder</button>
                 </form>";
             }
-        }
-        else{
+        } else {
             echo "<p class='responderMensaje'>no puedes responder</p>";
         }
         echo "</div>

@@ -1,0 +1,17 @@
+CREATE TABLE comments (
+    cid int(11) not null AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(128) not null,
+    fecha datetime not null,
+    mensaje TEXT not null
+);
+
+
+CREATE TABLE usuario (
+    id int(11) not null AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(128) not null,
+    pwd varchar(128) not null
+    );
+
+
++++ insertar usuario admin +++
+INSERT INTO usuario (uid, pwd) VALUES ('admin','admin'); 

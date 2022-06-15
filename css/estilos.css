@@ -335,13 +335,11 @@ form .form-control {
     order: 4;
 }
 
+.caja-comentarios{
+    margin-top: 5rem;
+}
 
 /* -----------------------------------   LOGIN SYSTEM ------------------------------------ */
-
-.btnAcceder {}
-
-.btnRegistro {}
-
 
 
 
@@ -380,45 +378,7 @@ form .form-control {
 
 
 /* --------------------------------- TABLA GALERIA -------------------------------------- */
-/* .tabla {
-    background-color: var(--color-white);
-    width: 100%;
-    border-radius: 4px;
-    border-collapse: collapse;
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 2rem;
-    box-shadow: 0 2px 20px rgba(0, 67, 115, 0.2);
-}
 
-.tabla th,tr {
-    text-align: center;
-    padding: 2rem 1.5rem;
-}
-
-.tabla tbody th {
-    border: rgb(16, 16, 16) solid 1px;
-}
-
-.imagenTabla {
-    max-width: 50%;
-}
-
-.containerSubirImg{
-    max-width: 80%;
-}
-
-@media screen and (max-width: 480px) {
-    .tabla{
-        width: 33%;
-    }
-}
-
-@media screen and (max-width: 780px) {
-    .tabla{
-        width: 50%;
-    }
-} */
 
 .tabla {
     border: none;
@@ -428,7 +388,7 @@ form .form-control {
     margin-top: 2rem;
 }
 
-.tabla td { 
+.tabla td {
     padding: 5px 10px;
     text-align: center;
     /* border: 1px solid rgb(245, 245, 245); */
@@ -439,17 +399,19 @@ form .form-control {
     /* background: #faf8f8; */
     text-align: center;
 }
-.tabla tr{
+
+.tabla tr {
     padding: 40px;
 }
-.tabla td img{
+
+.tabla td img {
     max-width: 300px;
     cursor: pointer;
     transition: 0.5s;
-   
+
 }
 
-.activada{
+.activada {
     transition: 1s;
     border-radius: 50px;
     box-shadow: 0px 5px 20px 10px rgba(0, 67, 115, 0.2);
@@ -458,13 +420,66 @@ form .form-control {
 }
 
 /* ------------------------------------------ COOKIES --------------------------------------- */
-.aviso-cookies{
-    display: block;
-    background: #fff;
+.aviso-cookies {
+    display: none;
+    background: rgb(240, 240, 240);
     padding: 20px;
     width: calc(100%- 40px);
     max-width: 300px;
     line-height: 150%;
     border-radius: 10px;
     position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    padding-top: 40px;
+    box-shadow: 0px 2px 20px 10px rgba(222, 222, 222, .25);
+    text-align: center;
+}
+.aviso-cookies .activo{
+    display: block;
+}
+
+.galleta {
+    max-width: 100px;
+    position: absolute;
+    top: -70px;
+    left: 35%;
+}
+
+.aviso-cookies .titulo-cookies,
+.aviso-cookies .parrafo-cookies {
+    margin-bottom: 15px;
+
+}
+
+.aviso-cookies .boton-cookies {
+    width: 100%;
+    border-radius: 10px;
+
+}
+
+.aviso-cookies .enlace-cookies {
+    text-decoration: none;
+}
+
+.aviso-cookies .enlace-cookies:hover {
+    text-decoration: underline;
+}
+
+.fondo-aviso-cookies {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+.fondo-aviso-cookies.activo{
+    display: block;
+}
+.activo{
+    display: block;
 }

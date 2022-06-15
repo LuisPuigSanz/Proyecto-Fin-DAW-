@@ -14,12 +14,9 @@ function setComments($conn)
 
         //Inserta en BBDD
         $sql = "INSERT INTO coments (uid, fecha, mensaje) VALUES ('$uid', '$fecha', '$mensaje')";
-        $result = $conn->query($sql);
+        $conn->query($sql);
     }
 }
-
-
-
 
 
 
@@ -29,49 +26,59 @@ function getComments($conn)
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
+
+        
+
+        //MOSTRAR MENSAJES
         echo "<div class='container'>
             <div class='comment-box'>
             <p>";
-        echo "<h6>" . $row['uid'] . "</h6> <br>";
-        echo $row['fecha'] . "<br>";
+           
+        echo "<span class='text-danger'>&nbsp;&nbsp;" . $row['respuesta_de'] . "</span>";
+        echo "<h6><i class='bx bxs-user' style='color:#257bd0'  ></i>&nbsp;&nbsp;" . $row['uid'] . "</h6>";
+        echo $row['fecha'] . "<br><br>";
         echo nl2br($row['mensaje']) . "</p>"; //nl = new line   2br = 2x <br> 
+        
 
 
         //EDITAR y ELIMINAR:
-        //$_SESSION['userid'] = id del usuario
-        //$_SESSION['userUid'] = nombre del usuario 
+        //mostramos los botones
         if (isset($_SESSION['userid'])) {
             if ($_SESSION['useruid'] == $row['uid']) {
+                //Botón eliminar:
                 echo "       
                 <form class='delete-form' method='POST' action='" . deleteComments($conn) . "'>
                 <input type='hidden' name='cid' value='" . $row['cid'] . "'>
                 <button name='commentDelete'>Eliminar</button>
-                </form>
+                </form>";
 
+                //Botón Editar:
+                echo "
                 <form class='edit-form' method='POST' action='../php/comentarios/editcomment.php' >
                 <input type='hidden' name='cid' value='" . $row['cid'] . "'>
                 <input type='hidden' name='uid' value='" . $row['uid'] . "'>
                 <input type='hidden' name='fecha' value='" . $row['fecha'] . "'>
                 <input type='hidden' name='mensaje' value='" . $row['mensaje'] . "'>
-                <button>Editar</button>
+                <button name='editComment'>Editar</button>
                 </form>";
             } else {
+                //Botón respuesta:
                 echo "       
-                <form class='reply-form' method='POST' action='" . replyComments($conn) . "'>
-                <input type='hidden' name='cid' value='" . $row['cid'] . "'>
-                <button name='commentDelete'>Responder</button>
+                <form class='reply-form' method='POST' action='../php/comentarios/replycomment.php'>
+                    <input type='hidden' name='uid' value='" . $row['uid'] . "'>
+                    <input type='hidden' name='fecha' value='" . $row['fecha'] . "'>
+                    <input type='hidden' name='mensaje' value='" . $row['mensaje'] . "'>
+                    <button name='commentReply' value='commentReply'>Responder</button>
                 </form>";
             }
         } else {
-            echo "<p class='responderMensaje'>no puedes responder</p>";
+            //No puedes responder si no estás loggeado.
+            echo "<p class='responderMensaje'>No puedes responder</p>";
         }
         echo "</div>
         </div>";
     }
 }
-
-
-
 
 
 
@@ -86,8 +93,8 @@ function editComments($conn)
 
         //ACTUALIZA la BBDD
         $sql = "UPDATE coments SET mensaje='$mensaje' WHERE cid='$cid'";
-        $result = $conn->query($sql);
-        header("Location: ../../media/actualidad.php");
+        $conn->query($sql);
+        header("Location: ../../media/actualidad.php#formularioComentarios");
         die;
     }
 }
@@ -96,19 +103,35 @@ function deleteComments($conn)
 {
 
     if (isset($_POST['commentDelete'])) {
+        $_SESSION['useruid'];
         $cid = $_POST['cid'];
 
         //ELIMINA de la BBDD
         $sql = "DELETE FROM coments WHERE cid='$cid'";
-        $result = $conn->query($sql);
-        // header("Location: ".$_SERVER['PHP_SELF']);
-        die();
+        $conn->query($sql);
+        // header("Location: actualidad.php");
+        // die;
     }
 }
 
 
-function replyComments()
+function replyComments($conn)
 {
+
+    if (isset($_POST['replica'])) {
+
+        $usuario = $_SESSION['useruid'];
+        $fecha = date('Y-m-d H:i:s');
+
+        $mensaje = $_POST['msjReply'];
+        $respuesta_de =$_POST['mensajeDe'];
+
+        //Inserta en BBDD
+        $sql = "INSERT INTO coments (uid, fecha, mensaje, respuesta_de) VALUES ('$usuario', '$fecha', '$mensaje', '$respuesta_de')";
+        $conn->query($sql);
+        header("Location: ../../media/actualidad.php#formularioComentarios");
+        die;
+    }
 }
 
 function getLogin($conn)

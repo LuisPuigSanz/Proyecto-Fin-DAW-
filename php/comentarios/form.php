@@ -2,7 +2,7 @@
 
 
 if(isset($_SESSION["userid"])){ //userid -> id del usuario en tabla usuarios
-    echo "<form method='POST' action='".setComments($conn)."'class='row g-3 justify-content-center'> 
+    echo "<form method='POST' action='".setComments($conn)."'class='row g-3 justify-content-center' id='formularioComentarios'> 
     <input type='hidden' name='uid' value='".$_SESSION["useruid"]."'>
     <input type='hidden' name='fecha' value='".date('Y-m-d H:i:s')."'>
     <textarea name='mensaje' placeholder='Escribe aquí tu comentario'></textarea><br>
@@ -17,5 +17,5 @@ else{
     
     
     
-?>
+
 

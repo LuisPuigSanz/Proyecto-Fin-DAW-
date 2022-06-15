@@ -1,13 +1,13 @@
 <?php
 
-function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
+function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat)
+{
 
     // $result;
 
-    if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
+    if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)) {
         $result = true; //Si hay un error -> verdadero
-    }
-    else{
+    } else {
         $result = false;
     }
     return $result;
@@ -16,14 +16,14 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
 
 
 
-function invalidUid($username){
-    
+function invalidUid($username)
+{
+
     // $result;
     //Esta función: escribimos un parámetro, y si no coincide, lanza error -> algoritmo de búsqueda
-    if(!preg_match("/^[a-zA-Z0-9]*$/", $username)){  
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $result = true; //Si hay un error -> verdadero
-    }
-    else{
+    } else {
         $result = false;
     }
     return $result;
@@ -33,13 +33,13 @@ function invalidUid($username){
 
 
 
-function invalidEmail($email){
+function invalidEmail($email)
+{
     // $result;
 
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){ //si es un email válido, devuelve true. Pero le ponemos ! para que devuelva falso
-        $result= true;
-    }
-    else{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { //si es un email válido, devuelve true. Pero le ponemos ! para que devuelva falso
+        $result = true;
+    } else {
         $result = false;
     }
     return $result;
@@ -49,14 +49,14 @@ function invalidEmail($email){
 
 
 
-function pwdMatch($pwd, $pwdRepeat){
+function pwdMatch($pwd, $pwdRepeat)
+{
     // $result;
 
     //queremos comprobar que coinciden
-    if($pwd !== $pwdRepeat){
+    if ($pwd !== $pwdRepeat) {
         $result = true;
-    }
-    else{
+    } else {
         $result = false;
     }
     return $result;
@@ -65,7 +65,8 @@ function pwdMatch($pwd, $pwdRepeat){
 
 
 
-function uidExists($conn, $username, $email){
+function uidExists($conn, $username, $email)
+{
     //Lo primero que necesitamos es conectar a la BD para comprobar si el usuario ya ha sido creado
     $sql = "SELECT * FROM usuarios WHERE userUid = ? OR userEmail = ?;";
 
@@ -75,7 +76,7 @@ function uidExists($conn, $username, $email){
     //Esto prevendrá que se pueda insertar código en el input
     $stmt = mysqli_stmt_init($conn); //iniciamos declaración -> stmt(statement)
 
-    if(!mysqli_stmt_prepare($stmt, $sql)){  //corre la declaración $sql dentro de la bbdd y busca algún error $stmt
+    if (!mysqli_stmt_prepare($stmt, $sql)) {  //corre la declaración $sql dentro de la bbdd y busca algún error $stmt
         header("location: ../registro.php?stmtfailed"); //la declaración falló
         exit();
     }
@@ -89,12 +90,10 @@ function uidExists($conn, $username, $email){
     $resultData = mysqli_stmt_get_result($stmt); // Aquí, cogemos los resultados de la declaración que hemos ejecutado.
     //Ahora, chequeamos si hay un resultado:
     // **IMPORTATE**
-    if($row = mysqli_fetch_assoc($resultData)){ //Array Asociativo que se asigna a $row, que devuelve TRUE si hay datos y FALSE, si no.
+    if ($row = mysqli_fetch_assoc($resultData)) { //Array Asociativo que se asigna a $row, que devuelve TRUE si hay datos y FALSE, si no.
         // Si es True, esos DATOS los USAMOS para el LOGIN (acceso)
         return $row;
-
-    }
-    else{
+    } else {
         // Si no hay datos, false.
         $result = false;
         return $result;
@@ -106,7 +105,8 @@ function uidExists($conn, $username, $email){
 
 
 
-function createUser($conn, $name, $email, $username, $pwd){
+function createUser($conn, $name, $email, $username, $pwd)
+{
     //Insertar en BBDD
     // ? placeholders
     $sql = "INSERT INTO usuarios (userName, userEmail, userUid, userPwd) VALUES (?,?,?,?);";
@@ -115,7 +115,7 @@ function createUser($conn, $name, $email, $username, $pwd){
     $stmt = mysqli_stmt_init($conn); //iniciamos declaración -> stmt(statement)
 
     //Comprobamos si es posible:
-    if(!mysqli_stmt_prepare($stmt, $sql)){  //corre la declaración $sql dentro de la bbdd y busca algún error $stmt
+    if (!mysqli_stmt_prepare($stmt, $sql)) {  //corre la declaración $sql dentro de la bbdd y busca algún error $stmt
         header("location: ../registro.php?stmtfailed"); //la declaración falló
         exit();
     }
@@ -133,7 +133,6 @@ function createUser($conn, $name, $email, $username, $pwd){
 
     header("location: ../registro.php?error=none");
     exit();
-
 }
 
 
@@ -143,25 +142,26 @@ function createUser($conn, $name, $email, $username, $pwd){
 
 // -------------------------- funciones para el ACCESO (login) -----------------------------------
 
-function emptyInputLogin($username, $pwd){
+function emptyInputLogin($username, $pwd)
+{
 
     // $result;
-    if(empty($username) || empty($pwd)){
+    if (empty($username) || empty($pwd)) {
         $result = true; //Si hay un error -> verdadero
-    }
-    else{
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function loginUser($conn, $username, $pwd){
-    
+function loginUser($conn, $username, $pwd)
+{
+
     //PRIMERO comprobamos que el usuario o el email, existe en la BD
     $uidExists = uidExists($conn, $username, $username); //metemos 2 username ya que podemos acceder por username o email
 
     // -- Gestión Errores --
-    if($uidExists === false){
+    if ($uidExists === false) {
         header("location: ../acceder.php?error=wronglogin");
         exit();
     }
@@ -170,41 +170,46 @@ function loginUser($conn, $username, $pwd){
     $pwdHashed = $uidExists["userPwd"];
     $checkPwd = password_verify($pwd, $pwdHashed); //Si coinciden -> True    Si no, False
 
-    if($checkPwd === false){ //si es falso, no coinciden las pwds
+    if ($checkPwd === false) { //si es falso, no coinciden las pwds
         header("location: ../acceder.php?error=wronglogin");
         exit();
-    }
-    else if($checkPwd === true){    //Si accede correctamente, INICIAMOS SESIÓN y mandamos a la página principal
+    } else if ($checkPwd === true) {    //Si accede correctamente, INICIAMOS SESIÓN y mandamos a la página principal
         session_start();
         $_SESSION["userid"] = $uidExists["userId"]; //id usuario tabla
         $_SESSION["useruid"] = $uidExists["userUid"]; //alias/nombre usuario en tabla
+        $_SESSION["pwd"] = $checkPwd["userPwd"];
+
+        $usuario = $_SESSION["useruid"];
+        $pwd = $_SESSION["pwd"];
+        setcookie('user', $usuario, time() + 3600);
+        setcookie('pwd', $pwd, time() + 3600);
+
+
         header("location: ../index.php");
         exit();
     }
-
 }
 
 
 // ------------------------------- ESTADÍSTICAS USUARIO -------------------------------
-function showStats($conn,$username){
+function showStats($conn, $username)
+{
 
-        require_once 'dbh.inc.php';
-        // $sql = "SELECT * FROM imagen WHERE userUid='$userUid'";
-        // $sql2 = "SELECT * FROM coments WHERE uid='$userUid'";ç
-    
-        $sql = "SELECT * FROM imagen WHERE userUid = '$username'";
-        $sql2 = "SELECT * FROM coment WHERE userUid = '$username'";
+    require_once 'dbh.inc.php';
+    // $sql = "SELECT * FROM imagen WHERE userUid='$userUid'";
+    // $sql2 = "SELECT * FROM coments WHERE uid='$userUid'";ç
 
-        $result = mysqli_query($conn, $sql);
-        $result2 = mysqli_query($conn, $sql2);
+    $sql = "SELECT * FROM imagen WHERE userUid = '$username'";
+    $sql2 = "SELECT * FROM coment WHERE userUid = '$username'";
 
-        $rowImg = mysqli_num_rows($result);
-        $rowComents = mysqli_num_rows($result2);
-        
-        // email=$email_address&event_id=$event_id";
-        
-        header("Location: ../media/panelAdmin.php?coments=".$rowComents."&imgs=".$rowImg);
-        exit();
-        
+    $result = mysqli_query($conn, $sql);
+    $result2 = mysqli_query($conn, $sql2);
 
+    $rowImg = mysqli_num_rows($result);
+    $rowComents = mysqli_num_rows($result2);
+
+    // email=$email_address&event_id=$event_id";
+
+    header("Location: ../media/panelAdmin.php?coments=" . $rowComents . "&imgs=" . $rowImg);
+    exit();
 }

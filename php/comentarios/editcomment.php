@@ -28,13 +28,10 @@ include 'coments.inc.php';
 
     <div class="caja-comentarios">
 
-
-
-
         <?php
         $cid = $_POST['cid'];
         $uid = $_POST['uid'];
-        $fecha = date_default_timezone_set('Europe/Madrid');
+        $fecha = date('Y-m-d H:i:s');
         $mensaje = $_POST['mensaje'];
 
 
